@@ -24,7 +24,7 @@ arguments = Arguments
     , input = "no file"
     }
 
-main :: IO ()
+main :: IO String
 main = do
     -- parse input
     inputArgs <- cmdArgs arguments
@@ -34,18 +34,16 @@ main = do
     -- read io json format and parse it
     let ioJsonFiles = map (cmdPath2IoJsonPath . snd) [x | x <- appGraph, fst x /= END]
     ioJsons <- mapM J.readIoJson ioJsonFiles
-    --putStrLn $ "io json formats:\n" ++ show ioJsons ++ "\n"
+    let ioJsons' = J.addEndIoJson ioJsons
+    --putStrLn $ "io json formats:\n" ++ show ioJsons' ++ "\n"
 
     -- make json key adapter
-    formatters <- mkFormatters ioJsons
+    formatters <- mkFormatters ioJsons'
     --putStrLn $ "formatters:\n" ++ show formatters ++ "\n"
 
     -- build app and run it
-    let app = mkApp appGraph ioJsons formatters
-    result <- run app $ input inputArgs
-    let decodedResult = decodeJStr2Str result
-    putStrLn decodedResult
-    --putStrLn "done"
+    let app = mkApp appGraph ioJsons' formatters
+    run app $ input inputArgs
 
 cmdPath2IoJsonPath :: String -> String
 cmdPath2IoJsonPath cmdPath = intercalate "/" (splitted ++ ["io.json"])

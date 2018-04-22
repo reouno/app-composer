@@ -29,6 +29,12 @@ readIoJson path = do
         Nothing -> putStrLn ("Cannot read " ++ path ++ ". use default format.") >> return ioJsonInit
         Just ioJson' -> return ioJson'
 
+-- 暫定的な処理
+-- 将来的には出力形式も指定できるようにする
+addEndIoJson :: [TmpIoJson] -> [TmpIoJson]
+addEndIoJson ioJsons = ioJsons ++ [TmpIoJson lastOutput lastOutput]
+    where lastOutput = output $ last ioJsons
+
 main :: IO ()
 main = do
     arg <- getArgs

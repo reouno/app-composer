@@ -4,7 +4,7 @@ github:              "reouno/app-composer"
 license:             BSD3
 author:              "Leo Uno"
 maintainer:          "leouno12@gmail.com"
-copyright:           "Copyright (c) 2017 Leo Uno"
+copyright:           "Copyright (c) 2018 Leo Uno"
 
 extra-source-files:
 - README.md
