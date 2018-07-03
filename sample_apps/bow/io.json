@@ -1,0 +1,11 @@
+{
+    "input":
+        {
+            "wakati": "string"
+        },
+    "output":
+        {
+            "outputFile": "string"
+        }
+}
+

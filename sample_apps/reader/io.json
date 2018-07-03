@@ -1,0 +1,10 @@
+{
+    "input":
+        {
+            "filePath": "string"
+        },
+    "output":
+        {
+            "fileContent": "string"
+        }
+}

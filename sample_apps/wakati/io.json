@@ -1,0 +1,10 @@
+{
+    "input":
+        {
+            "text": "string"
+        },
+    "output":
+        {
+            "wakati": "string"
+        }
+}
