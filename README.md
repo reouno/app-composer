@@ -16,3 +16,9 @@ stack build
 ```
 
 # Usage
+
+run sample modules
+
+```
+stack runghc src/Run.hs -- -g "./sample_apps/reader/read.hs >>= ./sample_apps/wakati/wakati.py >>= ./sample_apps/bow/bow.py" -i '{"filePath":"./sample_apps/sample.txt"}'
+```
